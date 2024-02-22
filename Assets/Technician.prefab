@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8473952410510635657}
   - component: {fileID: 8439313643670406890}
   - component: {fileID: 2162761140876823551}
-  m_Layer: 0
-  m_Name: Cylinder
-  m_TagString: Untagged
+  m_Layer: 6
+  m_Name: Technician
+  m_TagString: Technician
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b82cacc7ba834fc408d1ed7597071039, type: 2}
+  - {fileID: 2100000, guid: 4b388a966edbe134da84fe706e5b1a32, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
