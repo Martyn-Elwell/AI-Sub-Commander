@@ -17,7 +17,6 @@ public class Commander : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
 
