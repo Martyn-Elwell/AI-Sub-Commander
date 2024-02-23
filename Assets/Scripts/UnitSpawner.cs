@@ -21,9 +21,10 @@ public class UnitSpawner : MonoBehaviour
 
     public int maxUnitCost = 20; // Maximum total unit cost
     private int totalUnitCost = 0; // Total unit cost
-    [SerializeField] private int unitCount;
-    [SerializeField] private int technicianCount;
-    [SerializeField] private int reconCount;
+
+    private int unitCount;
+    private int technicianCount;
+    private int reconCount;
 
     [SerializeField] private Text unitCountText;
     [SerializeField] private Text technicianCountText;
@@ -149,6 +150,6 @@ public class UnitSpawner : MonoBehaviour
         {
             Destroy(unit);
         }
-        instantiatedUnits = instantiatedUnits.Take(instantiatedUnits.Count).ToList();
+        instantiatedUnits.Clear();
     }
 }
