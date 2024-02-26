@@ -33,4 +33,9 @@ public class Commander : MonoBehaviour
             unit.GetComponent<Unit>().SetDestination(new Vector3(randomX, 1, randomZ));
         }
     }
+
+    public void debug()
+    {
+        Debug.Log("Testing");
+    }
 }
