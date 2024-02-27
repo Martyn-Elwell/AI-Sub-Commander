@@ -9,6 +9,8 @@ public class Unit : MonoBehaviour
     private NavMeshAgent agent;
     private Animator animator;
 
+    private bool active = false;
+
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -22,9 +24,14 @@ public class Unit : MonoBehaviour
 
     void Update()
     {
+        if (!active) { return; }
         float velocity = Mathf.Abs(agent.velocity.x) + Mathf.Abs(agent.velocity.z);
-        Debug.Log(velocity);
         if (velocity > 0.1) { animator.SetBool("Moving", true); }
         else { animator.SetBool("Moving", false); }
+    }
+
+    public void activate()
+    {
+        active = true;
     }
 }
