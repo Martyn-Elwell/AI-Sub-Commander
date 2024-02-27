@@ -5,6 +5,10 @@ using Text = TMPro.TextMeshProUGUI;
 
 public class SpawnController : MonoBehaviour
 {
+    [Header("References")]
+    public Camera overheadCamera;
+    public UnitSpawner[] spawners;
+
     [Header("Prefabs")]
     [HideInInspector]public GameObject Prefab;
     public GameObject commanderPrefab;
@@ -28,7 +32,10 @@ public class SpawnController : MonoBehaviour
     public int technicianCount;
     public int reconCount;
 
-
+    public void Start()
+    {
+        spawners = FindObjectsOfType<UnitSpawner>();
+    }
 
     public void SetCurrentUnit(string input)
     {

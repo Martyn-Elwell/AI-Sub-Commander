@@ -34,8 +34,8 @@ public class Commander : MonoBehaviour
         }
     }
 
-    public void debug()
+    public void setSquad(List<GameObject> inputList)
     {
-        Debug.Log("Testing");
+        squad = inputList;
     }
 }

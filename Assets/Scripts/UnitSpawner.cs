@@ -46,8 +46,6 @@ public class UnitSpawner : MonoBehaviour
 
     }
 
-
-
     public void OnButtonClick()
     {
         if (!active)
@@ -63,21 +61,25 @@ public class UnitSpawner : MonoBehaviour
                     commanderCount += 1;
                     controller.commanderCount += 1;
                     InstantiateUnits();
+                    instantiatedUnits[0].GetComponent<Commander>().setSquad(instantiatedUnits);
                     break;
                 case unitEnum.UNIT:
                     unitCount += 1;
                     controller.unitCount += 1;
                     InstantiateUnits();
+                    instantiatedUnits[0].GetComponent<Commander>().setSquad(instantiatedUnits);
                     break;
                 case unitEnum.TECHNICIAN:
                     technicianCount += 1;
                     controller.technicianCount += 1;
                     InstantiateUnits();
+                    instantiatedUnits[0].GetComponent<Commander>().setSquad(instantiatedUnits);
                     break;
                 case unitEnum.RECON:
                     reconCount += 1;
                     controller.reconCount += 1;
                     InstantiateUnits();
+                    instantiatedUnits[0].GetComponent<Commander>().setSquad(instantiatedUnits);
                     break;
             }
         }
@@ -122,8 +124,10 @@ public class UnitSpawner : MonoBehaviour
 
                 float xPos = x * gridSpacing;
                 float yPos = y * gridSpacing;
+
                 Vector3 spawnPosition = new Vector3(xPos * - transform.right.x, 0f, yPos * transform.forward.z);
                 GameObject instantiatedUnit = Instantiate(prefabs[index], unitSpawnpoint.position + spawnPosition, transform.rotation);
+                //instantiatedUnit.GetComponentInChildren<Canvas>().worldCamera = controller.overheadCamera;
                 instantiatedUnits.Add(instantiatedUnit);
 
                 count--;
