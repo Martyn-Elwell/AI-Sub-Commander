@@ -55,6 +55,7 @@ MonoBehaviour:
   gridSpacing: 2
   instantiatedUnits: []
   buttonImage: {fileID: 613123115642869622}
+  inactiveSprite: {fileID: 21300000, guid: 2b31a2e6e83f52f41b294ec1214ee799, type: 3}
   activeSprite: {fileID: 21300000, guid: c6d739c8124769248a44264420a6b906, type: 3}
 --- !u!1 &5619169607941883512
 GameObject:

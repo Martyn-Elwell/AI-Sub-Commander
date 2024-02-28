@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Commander : MonoBehaviour
+public class Commander : Unit
 {
-    [SerializeField] private UnitSpawner swatVan;
     [SerializeField] private List<GameObject> squad;
     // Start is called before the first frame update
     void Start()
     {
-        swatVan = FindObjectOfType<UnitSpawner>();
-        squad = swatVan.instantiatedUnits;
         
     }
 
@@ -22,7 +19,7 @@ public class Commander : MonoBehaviour
 
     public void scatter()
     {
-        swatVan = FindObjectOfType<UnitSpawner>();
+        /*swatVan = FindObjectOfType<UnitSpawner>();
         squad = swatVan.instantiatedUnits;
         foreach (GameObject unit in squad)
         {
@@ -31,11 +28,16 @@ public class Commander : MonoBehaviour
 
 
             unit.GetComponent<Unit>().SetDestination(new Vector3(randomX, 1, randomZ));
-        }
+        }*/
     }
 
-    public void setSquad(List<GameObject> inputList)
+    public void SetSquad(List<GameObject> inputList)
     {
         squad = inputList;
+    }
+
+    public override void DeleteUnit()
+    {
+        spawnZone.RemoveAndDestroySquad();
     }
 }

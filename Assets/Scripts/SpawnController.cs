@@ -92,6 +92,13 @@ public class SpawnController : MonoBehaviour
         return false;
     }
 
+    public void setNewCosts()
+    {
+        totalUnitCost = commanderCount * commanderCost + unitCount * unitCost + technicianCount * technicianCost + reconCount * reconCost;
+        UpdateUnitCostText();
+
+    }
+
     public bool checkActivation()
     {
         totalUnitCost = commanderCount * commanderCost + unitCount * unitCost + technicianCount * technicianCost + reconCount * reconCost;

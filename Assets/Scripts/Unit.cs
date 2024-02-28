@@ -6,8 +6,10 @@ using UnityEngine.AI;
 
 public class Unit : MonoBehaviour
 {
-    private NavMeshAgent agent;
-    private Animator animator;
+    protected NavMeshAgent agent;
+    protected Animator animator;
+    protected UnitSpawner spawnZone;
+    public unitEnum type;
 
     private bool active = false;
 
@@ -30,8 +32,18 @@ public class Unit : MonoBehaviour
         else { animator.SetBool("Moving", false); }
     }
 
-    public void activate()
+    public void Activate()
     {
         active = true;
+    }
+
+    public virtual void DeleteUnit()
+    {
+        spawnZone.RemoveAndDestroyUnit(transform.gameObject, type);
+    }
+
+    public void SetSpawn(UnitSpawner us)
+    {
+        spawnZone = us;
     }
 }
