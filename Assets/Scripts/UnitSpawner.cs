@@ -33,7 +33,7 @@ public class UnitSpawner : MonoBehaviour
     [SerializeField] private Sprite activeSprite;
 
 
-    
+
     private void Start()
     {
         prefabs.Add(controller.commanderPrefab);
@@ -114,7 +114,7 @@ public class UnitSpawner : MonoBehaviour
         int rows = Mathf.CeilToInt((float)count / columns);
 
         // Instantiate prefabs in a grid
-        for (int y = 0; y < rows;y++)
+        for (int y = 0; y < rows; y++)
         {
             for (int x = 0; x < columns; x++)
             {
@@ -127,7 +127,7 @@ public class UnitSpawner : MonoBehaviour
                 float yPos = y * gridSpacing;
 
                 int rotationValue = Mathf.CeilToInt(transform.rotation.eulerAngles.y / 90);
-                Vector3 offset = new Vector3(0f,0f,0f);
+                Vector3 offset = new Vector3(0f, 0f, 0f);
 
                 if ((rotationValue % 2) == 1)
                 {
@@ -138,10 +138,10 @@ public class UnitSpawner : MonoBehaviour
                 else if ((rotationValue % 2) == 0)
                 {
                     // Horizontal Rotation
-                    offset = new Vector3(xPos * - transform.right.x, 0f, yPos * transform.forward.z);
+                    offset = new Vector3(xPos * -transform.right.x, 0f, yPos * transform.forward.z);
                 }
 
-                
+
                 GameObject instantiatedUnit = Instantiate(prefabs[index], unitSpawnpoint.position + offset, transform.rotation);
                 if (instantiatedUnit.GetComponent<Unit>() != null) { instantiatedUnit.GetComponent<Unit>().SetSpawn(this); }
                 //instantiatedUnit.GetComponentInChildren<Canvas>().worldCamera = controller.overheadCamera;
@@ -149,7 +149,7 @@ public class UnitSpawner : MonoBehaviour
 
                 count--;
                 loopCycle++;
-                
+
                 returnValue++;
             }
         }
@@ -223,7 +223,7 @@ public class UnitSpawner : MonoBehaviour
         active = false;
 
 
-        
+
     }
 }
 
