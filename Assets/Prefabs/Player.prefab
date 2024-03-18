@@ -1943,7 +1943,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.8
+  m_Height: 1.85
   m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -1968,6 +1968,7 @@ MonoBehaviour:
   gravity: -9.81
   interactDistance: 5
   ringMenu: {fileID: 7026554223166348684}
+  interactText: {fileID: 6195960625043627278}
 --- !u!1 &6587987993383384301
 GameObject:
   m_ObjectHideFlags: 0
@@ -3195,6 +3196,11 @@ PrefabInstance:
 --- !u!224 &1492216487714781901 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3493945913179553919, guid: 8d7a883de21c74b46abe46ec19dcce4c, type: 3}
+  m_PrefabInstance: {fileID: 2650816666128530098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6195960625043627278 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8157688992990422972, guid: 8d7a883de21c74b46abe46ec19dcce4c, type: 3}
   m_PrefabInstance: {fileID: 2650816666128530098}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7026554223166348684 stripped

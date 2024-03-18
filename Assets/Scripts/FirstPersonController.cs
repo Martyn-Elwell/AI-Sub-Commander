@@ -13,6 +13,7 @@ public class FirstPersonController : MonoBehaviour
     private CharacterController characterController;
     private Transform cameraTransform;
     [SerializeField] private GameObject ringMenu;
+    [SerializeField] private GameObject interactText;
 
     private float verticalRotation = 0f;
     private Vector3 playerVelocity;
@@ -22,7 +23,7 @@ public class FirstPersonController : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         cameraTransform = GetComponentInChildren<Camera>().transform;
 
-        LockCursor();
+        LockCursor(true);
     }
 
     void Update()
@@ -30,6 +31,8 @@ public class FirstPersonController : MonoBehaviour
         UpdateInputs();
 
         UpdateMovement();
+
+        UpdateContextRaycast();
 
 
 
@@ -72,9 +75,27 @@ public class FirstPersonController : MonoBehaviour
     private void UpdateInputs()
     {
         // Left Mouse Button
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             InteractWithObject();
+        }
+    }
+
+    private void UpdateContextRaycast()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, interactDistance))
+        {
+            GameObject hitObject = hit.collider.gameObject;
+            IInteractable interactable = hitObject.GetComponent<IInteractable>();
+            if (interactable != null)
+            {
+                interactText.SetActive(true);
+            }
+            else
+            {
+                interactText.SetActive(false);
+            }
         }
     }
 
@@ -90,22 +111,36 @@ public class FirstPersonController : MonoBehaviour
                 interactable.Interact();
                 ringMenu.SetActive(true);
 
-                UnLockCursor();
+                LockCursor(false);
             }
             else
             {
-                ringMenu.SetActive(false);
-                LockCursor();
+                LockCursor(!ringMenu.activeSelf);
+                ringMenu.SetActive(!ringMenu.activeSelf);
+                
             }
         }
         else
         {
-            ringMenu.SetActive(false);
-            LockCursor();
+            LockCursor(!ringMenu.activeSelf);
+            ringMenu.SetActive(!ringMenu.activeSelf);
+            
         }
     }
 
-    private void LockCursor() { Cursor.lockState = CursorLockMode.Locked; Cursor.visible = false; }
 
-    private void UnLockCursor() { Cursor.lockState = CursorLockMode.None; Cursor.visible = true; }
+
+    private void LockCursor(bool lockState)
+    {
+        if (lockState)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+    }
 }
