@@ -18,8 +18,8 @@ TagManager:
   - Unit
   - Roof
   - Ignore Navigation
-  - 
-  - 
+  - IgnoreTopDown
+  - IgnorePOV
   - 
   - 
   - 
