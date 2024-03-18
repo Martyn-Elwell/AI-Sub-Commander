@@ -60,7 +60,7 @@ public class RingMenu : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log(selection);
+            menuItems[selection].GetComponent<MenuItem>().Click();
         }
 
     }
