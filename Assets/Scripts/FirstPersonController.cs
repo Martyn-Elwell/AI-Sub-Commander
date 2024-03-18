@@ -115,14 +115,14 @@ public class FirstPersonController : MonoBehaviour
             }
             else
             {
-                LockCursor(!ringMenu.activeSelf);
+                LockCursor(ringMenu.activeSelf);
                 ringMenu.SetActive(!ringMenu.activeSelf);
                 
             }
         }
         else
         {
-            LockCursor(!ringMenu.activeSelf);
+            LockCursor(ringMenu.activeSelf);
             ringMenu.SetActive(!ringMenu.activeSelf);
             
         }

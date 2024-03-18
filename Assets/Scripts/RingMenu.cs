@@ -16,23 +16,35 @@ public class RingMenu : MonoBehaviour
     private MenuItem menuItemSc;
     private MenuItem previousMenuItemSc;
 
-    private 
+    private
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        UpdateMenu();
+
+        UpdateInputs();
+    }
+
+    public void ShowMenu()
+    {
+
+    }
+
+    private void UpdateMenu()
+    {
         normalisedMousePosition = new Vector2(Input.mousePosition.x - Screen.width / 2, Input.mousePosition.y - Screen.height / 2);
 
-        if(normalisedMousePosition.magnitude <= deadzone) { return; }
+        if (normalisedMousePosition.magnitude <= deadzone) { return; }
         currentAngle = Mathf.Atan2(normalisedMousePosition.y, normalisedMousePosition.x) * Mathf.Rad2Deg;
 
         currentAngle = (currentAngle + 360) % 360;
 
-        selection = (int) currentAngle / (360 / menuItems.Count);
+        selection = (int)currentAngle / (360 / menuItems.Count);
 
         if (selection != previousSelection)
         {
@@ -44,9 +56,12 @@ public class RingMenu : MonoBehaviour
             menuItemSc.Select();
         }
     }
-
-    public void ShowMenu()
+    private void UpdateInputs()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Debug.Log(selection);
+        }
 
     }
 }
