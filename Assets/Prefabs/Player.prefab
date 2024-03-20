@@ -1877,6 +1877,7 @@ GameObject:
   - component: {fileID: 348715976150332215}
   - component: {fileID: 8513853997823600559}
   - component: {fileID: 8804301477182391794}
+  - component: {fileID: 3560212279207111417}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1969,6 +1970,19 @@ MonoBehaviour:
   interactDistance: 5
   ringMenu: {fileID: 7026554223166348684}
   interactText: {fileID: 6195960625043627278}
+--- !u!114 &3560212279207111417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6368801099595349558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b12edf65c8b88b46b0319b9d2d906e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  commanders: []
 --- !u!1 &6587987993383384301
 GameObject:
   m_ObjectHideFlags: 0

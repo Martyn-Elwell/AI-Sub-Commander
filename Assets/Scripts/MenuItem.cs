@@ -8,6 +8,8 @@ public class MenuItem : MonoBehaviour
     [SerializeField] private Color hoverColour;
     [SerializeField] private Color baseColour;
     [SerializeField] private Image background;
+    [SerializeField] private GameObject accent;
+    [SerializeField] private GameObject description;
 
     [SerializeField] public IMenuAction action;
     // Start is called before the first frame update
@@ -20,11 +22,13 @@ public class MenuItem : MonoBehaviour
     public void Select()
     {
         background.color = hoverColour;
+        accent.SetActive(true);
     }
 
     public void Deselect()
     {
         background.color = baseColour;
+        accent.SetActive(false);
     }
 
     public void Click()

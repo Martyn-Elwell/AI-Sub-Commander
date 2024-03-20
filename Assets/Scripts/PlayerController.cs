@@ -1,43 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 5f;
-    [SerializeField] private float mouseSensitivity = 100f;
+    [SerializeField] private UnitSpawner redZone;
+    [SerializeField] private Commander redCommander;
+    [SerializeField] private UnitSpawner yellowZone;
+    [SerializeField] private Commander yellowCommander;
+    [SerializeField] private UnitSpawner greenZone;
+    [SerializeField] private Commander greenCommander;
 
-    private CharacterController characterController;
-    private Transform cameraTransform;
-
-    private float verticalRotation = 0f;
-
-    void Awake()
+    private void Awake()
     {
-        characterController = GetComponent<CharacterController>();
-        cameraTransform = GetComponentInChildren<Camera>().transform;
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
-    void Update()
-    {
-        // Movement
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
-        Vector3 movementDirection = transform.forward * verticalInput + transform.right * horizontalInput;
-        characterController.Move(movementDirection * movementSpeed * Time.deltaTime);
-
-        // Rotation
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-        verticalRotation -= mouseY;
-        verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
-
-        cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-        transform.Rotate(Vector3.up * mouseX);
+        redCommander = redZone.instantiatedUnits.First().GetComponent<Commander>();
+        yellowCommander = yellowZone.instantiatedUnits.First().GetComponent<Commander>();
+        greenCommander = greenZone.instantiatedUnits.First().GetComponent<Commander>();
     }
 }

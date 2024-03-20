@@ -19,6 +19,7 @@ public class Commander : Unit
 
     public void scatter()
     {
+        Debug.Log("Scatter");
         /*swatVan = FindObjectOfType<UnitSpawner>();
         squad = swatVan.instantiatedUnits;
         foreach (GameObject unit in squad)
