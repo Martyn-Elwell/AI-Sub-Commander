@@ -21,6 +21,7 @@ public class Unit : MonoBehaviour
 
     public void SetDestination(Vector3 newPos)
     {
+        Debug.Log("moving");
         agent.SetDestination(newPos);
     }
 

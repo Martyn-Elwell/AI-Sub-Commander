@@ -4,38 +4,31 @@ using UnityEngine;
 
 public class FirstPersonController : MonoBehaviour
 {
+    private CharacterController characterController;
+    private Transform cameraTransform;
+    private PlayerController player;
+
     public float movementSpeed = 5f;
     public float mouseSensitivity = 100f;
     public float jumpForce = 1f;
     public float gravity = -9.81f;
-    public float interactDistance = 5f;
-
-    private CharacterController characterController;
-    private Transform cameraTransform;
-    [SerializeField] private GameObject ringMenu;
-    [SerializeField] private GameObject interactText;
 
     private float verticalRotation = 0f;
     private Vector3 playerVelocity;
+    
+
 
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         cameraTransform = GetComponentInChildren<Camera>().transform;
-
-        LockCursor(true);
+        player = GetComponent<PlayerController>();
     }
 
     void Update()
     {
-        UpdateInputs();
 
         UpdateMovement();
-
-        UpdateContextRaycast();
-
-
-
     }
 
     private void UpdateMovement()
@@ -70,77 +63,5 @@ public class FirstPersonController : MonoBehaviour
 
         cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
-    }
-
-    private void UpdateInputs()
-    {
-        // Left Mouse Button
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            InteractWithObject();
-        }
-    }
-
-    private void UpdateContextRaycast()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, interactDistance))
-        {
-            GameObject hitObject = hit.collider.gameObject;
-            IInteractable interactable = hitObject.GetComponent<IInteractable>();
-            if (interactable != null)
-            {
-                interactText.SetActive(true);
-            }
-            else
-            {
-                interactText.SetActive(false);
-            }
-        }
-    }
-
-    private void InteractWithObject()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(cameraTransform.position, cameraTransform.forward, out hit, interactDistance))
-        {
-            GameObject hitObject = hit.collider.gameObject;
-            IInteractable interactable = hitObject.GetComponent<IInteractable>();
-            if (interactable != null)
-            {
-                interactable.Interact();
-                ringMenu.SetActive(true);
-
-                LockCursor(false);
-            }
-            else
-            {
-                LockCursor(ringMenu.activeSelf);
-                ringMenu.SetActive(!ringMenu.activeSelf);
-                
-            }
-        }
-        else
-        {
-            LockCursor(ringMenu.activeSelf);
-            ringMenu.SetActive(!ringMenu.activeSelf);
-            
-        }
-    }
-
-
-
-    private void LockCursor(bool lockState)
-    {
-        if (lockState)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-    }
+    }   
 }

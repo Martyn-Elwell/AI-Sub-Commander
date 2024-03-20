@@ -9,7 +9,6 @@ public class MenuItem : MonoBehaviour
     [SerializeField] private Color baseColour;
     [SerializeField] private Image background;
     [SerializeField] private GameObject accent;
-    [SerializeField] private GameObject description;
 
     [SerializeField] public IMenuAction action;
     // Start is called before the first frame update
@@ -32,6 +31,14 @@ public class MenuItem : MonoBehaviour
     }
 
     public void Click()
+    {
+        if (action != null)
+        {
+            action.Activate();
+        }
+    }
+
+    public void Click(IInteractable interction)
     {
         if (action != null)
         {

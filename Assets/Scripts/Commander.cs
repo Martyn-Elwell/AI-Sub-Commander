@@ -19,17 +19,13 @@ public class Commander : Unit
 
     public void scatter()
     {
-        Debug.Log("Scatter");
-        /*swatVan = FindObjectOfType<UnitSpawner>();
-        squad = swatVan.instantiatedUnits;
         foreach (GameObject unit in squad)
         {
             float randomX = Random.Range(-10f, 10f);
             float randomZ = Random.Range(-10f, 10f);
-
-
-            unit.GetComponent<Unit>().SetDestination(new Vector3(randomX, 1, randomZ));
-        }*/
+            if (unit == this.gameObject) { continue; }
+            unit.GetComponent<Unit>().SetDestination(new Vector3(randomX, 0f, randomZ));
+        }
     }
 
     public void SetSquad(List<GameObject> inputList)

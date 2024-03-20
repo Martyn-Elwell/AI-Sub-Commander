@@ -16,6 +16,7 @@ public class RingMenu : MonoBehaviour
     private MenuItem menuItemSc;
     private MenuItem previousMenuItemSc;
 
+    private IInteractable currentInteractable;
     private
     void Start()
     {
@@ -63,5 +64,22 @@ public class RingMenu : MonoBehaviour
             menuItems[selection].GetComponent<MenuItem>().Click();
         }
 
+    }
+
+    public void SetInteractableObject(IInteractable interactable)
+    {
+        currentInteractable = interactable;
+    }
+
+    public void SetButtonReferences()
+    {
+        foreach (GameObject button in menuItems)
+        {
+            if (button.GetComponent<MA_OrderCommander>()  != null)
+            {
+                button.GetComponent<MA_OrderCommander>().setCommander();
+            }
+            
+        }
     }
 }
