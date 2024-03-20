@@ -15,6 +15,8 @@ public class FirstPersonController : MonoBehaviour
 
     private float verticalRotation = 0f;
     private Vector3 playerVelocity;
+
+    //public bool inMenu;
     
 
 
@@ -29,6 +31,7 @@ public class FirstPersonController : MonoBehaviour
     {
 
         UpdateMovement();
+
     }
 
     private void UpdateMovement()
@@ -45,6 +48,7 @@ public class FirstPersonController : MonoBehaviour
         {
             playerVelocity.y = 0f;
         }
+
         playerVelocity.y += gravity * Time.deltaTime;
         characterController.Move(playerVelocity * Time.deltaTime);
 
@@ -61,7 +65,13 @@ public class FirstPersonController : MonoBehaviour
         verticalRotation -= mouseY;
         verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
 
-        cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-        transform.Rotate(Vector3.up * mouseX);
+        // Rotatation
+        if (!Cursor.visible)
+        {
+            cameraTransform.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+            transform.Rotate(Vector3.up * mouseX);
+        }
+        
+        
     }   
 }

@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviour
             {
                 interactText.SetActive(false);
                 ringMenu.SetActive(false);
+                LockCursor(true);
             }
         }
     }
@@ -89,14 +90,14 @@ public class PlayerController : MonoBehaviour
             if (interactable != null)
             {
                 interactable.Interact();
-                ringMenu.SetActive(true);
+                ringMenu.SetActive(!ringMenu.activeSelf);
                 ringMenu.GetComponent<RingMenu>().SetInteractableObject(interactable);
-                LockCursor(false);
+                LockCursor(Cursor.visible);
             }
             else
             {
-                LockCursor(ringMenu.activeSelf);
-                ringMenu.SetActive(!ringMenu.activeSelf);
+                LockCursor(true);
+                ringMenu.SetActive(false);
 
             }
         }
