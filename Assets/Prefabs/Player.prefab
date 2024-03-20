@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 7921728845033001491}
   - component: {fileID: 2916470488475721567}
   - component: {fileID: 1688085890846439704}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Wep_PistolSwat_Slide_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3532456692063591684}
   - component: {fileID: 5028081157111392869}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Character_Male_FBI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1988,6 +1988,7 @@ MonoBehaviour:
   ringMenu: {fileID: 7026554223166348684}
   interactText: {fileID: 6195960625043627278}
   interactDistance: 5
+  currentInteractable: {fileID: 0}
 --- !u!1 &6587987993383384301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,7 +2000,7 @@ GameObject:
   - component: {fileID: 815974204544835343}
   - component: {fileID: 970535099137742105}
   - component: {fileID: 5658817179747858503}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Wep_PistolSwat_Mag_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2146,7 +2147,7 @@ GameObject:
   - component: {fileID: 1289817009741965921}
   - component: {fileID: 4559418680905435085}
   - component: {fileID: 769712002391805418}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Wep_PistolSwat_Trigger_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2261,7 +2262,7 @@ GameObject:
   - component: {fileID: 8376184348880059115}
   - component: {fileID: 5268950659430658646}
   - component: {fileID: 8047259864024586953}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SM_Item_Handcuffs_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2377,7 +2378,7 @@ GameObject:
   - component: {fileID: 3960822340678098770}
   - component: {fileID: 8031781619192139996}
   - component: {fileID: 2224470655464018624}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
