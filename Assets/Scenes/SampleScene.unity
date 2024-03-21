@@ -4355,9 +4355,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -4473,7 +4473,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 1
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -7030,6 +7030,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: House
       objectReference: {fileID: 0}
+    - target: {fileID: 7404571778364337575, guid: 9ebd35dc0efbf014a83becff26f94963, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7184,14 +7188,14 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 4149264401408301642}
+  - {fileID: 279044873}
   - {fileID: 963194228}
   - {fileID: 705507995}
   - {fileID: 1606570130}
   - {fileID: 2107586101811016230}
   - {fileID: 945401814375679469}
   - {fileID: 721199687}
-  - {fileID: 4149264401408301642}
-  - {fileID: 279044873}
   - {fileID: 1449453924}
   - {fileID: 5535406043963914799}
   - {fileID: 1823891732}
