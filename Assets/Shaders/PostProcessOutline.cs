@@ -12,6 +12,7 @@ public sealed class PostProcessOutline : PostProcessEffectSettings
     public FloatParameter depthMax = new FloatParameter { value = 1f };
 }
 
+// Shader Renderer
 public class PostProcessOutlineRenderer : PostProcessEffectRenderer<PostProcessOutline>
 {
     public override void Render(PostProcessRenderContext context)
