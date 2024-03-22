@@ -57,21 +57,33 @@ public class PlayerController : MonoBehaviour
         {
             GameObject hitObject = hit.collider.gameObject;
             IInteractable interactable = hitObject.GetComponent<IInteractable>();
+            // Ray hit interactable
             if (interactable != null)
             {
                 interactText.SetActive(true);
+                interactable.Outline(true);
                 currentInteractable = hitObject;
             }
+            // Ray hit non interactable
             else
             {
                 interactText.SetActive(false);
+                currentInteractable.GetComponent<IInteractable>().Outline(false);
             }
         }
+        // Ray did not hit anything
+        else
+        {
+            currentInteractable.GetComponent<IInteractable>().Outline(false);
+        }
+
+        // Player walked away from interactable
         if (currentInteractable != null)
         {
             if (Vector3.Distance(transform.position, currentInteractable.transform.position) > interactDistance)
             {
                 interactText.SetActive(false);
+                currentInteractable.GetComponent<IInteractable>().Outline(false);
                 ringMenu.SetActive(false);
                 LockCursor(true);
             }
