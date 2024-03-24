@@ -12,6 +12,8 @@ public class Unit : MonoBehaviour
     public unitEnum type;
 
     private bool active = false;
+    public GameObject assignedTask;
+    public InteractionType taskType;
 
     private void Start()
     {

@@ -7,6 +7,7 @@ public class SpawnController : MonoBehaviour
 {
     [Header("References")]
     public Camera overheadCamera;
+    public GameObject player;
     public UnitSpawner[] spawners;
 
     [Header("Prefabs")]

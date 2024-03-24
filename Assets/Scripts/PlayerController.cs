@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject interactText;
     [SerializeField] private float interactDistance = 5f;
 
-    [HideInInspector] public GameObject currentInteractable;
+    public GameObject currentInteractable = null;
+    [HideInInspector] public InteractionType currentInteractionType;
 
     private void Awake()
     {
@@ -44,8 +45,22 @@ public class PlayerController : MonoBehaviour
     private void UpdateInputs()
     {
         // Left Mouse Button
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            currentInteractionType = InteractionType.BREACH;
+            Debug.Log(currentInteractionType);
+            InteractWithObject();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            currentInteractionType = InteractionType.COVER;
+            Debug.Log(currentInteractionType);
+            InteractWithObject();
+        }
         if (Input.GetKeyDown(KeyCode.F))
         {
+            currentInteractionType = InteractionType.SABOTAGE;
+            Debug.Log(currentInteractionType);
             InteractWithObject();
         }
     }
@@ -135,5 +150,11 @@ public class PlayerController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+    }
+
+    public GameObject GetCurrentInteractable()
+    {
+        if (currentInteractable!= null) { return currentInteractable; }
+        else { return null; }
     }
 }

@@ -62,25 +62,25 @@ public class UnitSpawner : MonoBehaviour
                     commanderCount += 1;
                     controller.commanderCount += 1;
                     InstantiateUnits();
-                    instantiatedUnits[0].GetComponent<Commander>().SetSquad(instantiatedUnits);
+                    instantiatedUnits[0].GetComponent<Commander>().SetSquad(instantiatedUnits, controller.player);
                     break;
                 case unitEnum.UNIT:
                     unitCount += 1;
                     controller.unitCount += 1;
                     InstantiateUnits();
-                    instantiatedUnits[0].GetComponent<Commander>().SetSquad(instantiatedUnits);
+                    instantiatedUnits[0].GetComponent<Commander>().SetSquad(instantiatedUnits, controller.player);
                     break;
                 case unitEnum.TECHNICIAN:
                     technicianCount += 1;
                     controller.technicianCount += 1;
                     InstantiateUnits();
-                    instantiatedUnits[0].GetComponent<Commander>().SetSquad(instantiatedUnits);
+                    instantiatedUnits[0].GetComponent<Commander>().SetSquad(instantiatedUnits, controller.player);
                     break;
                 case unitEnum.RECON:
                     reconCount += 1;
                     controller.reconCount += 1;
                     InstantiateUnits();
-                    instantiatedUnits[0].GetComponent<Commander>().SetSquad(instantiatedUnits);
+                    instantiatedUnits[0].GetComponent<Commander>().SetSquad(instantiatedUnits, controller.player);
                     break;
             }
         }
@@ -179,21 +179,21 @@ public class UnitSpawner : MonoBehaviour
                     unitCount -= 1;
                     controller.unitCount -= 1;
                     InstantiateUnits();
-                    instantiatedUnits[0].GetComponent<Commander>().SetSquad(instantiatedUnits);
+                    instantiatedUnits[0].GetComponent<Commander>().SetSquad(instantiatedUnits, controller.player);
                     controller.setNewCosts();
                     break;
                 case unitEnum.TECHNICIAN:
                     technicianCount -= 1;
                     controller.technicianCount -= 1;
                     InstantiateUnits();
-                    instantiatedUnits[0].GetComponent<Commander>().SetSquad(instantiatedUnits);
+                    instantiatedUnits[0].GetComponent<Commander>().SetSquad(instantiatedUnits, controller.player);
                     controller.setNewCosts();
                     break;
                 case unitEnum.RECON:
                     reconCount -= 1;
                     controller.reconCount -= 1;
                     InstantiateUnits();
-                    instantiatedUnits[0].GetComponent<Commander>().SetSquad(instantiatedUnits);
+                    instantiatedUnits[0].GetComponent<Commander>().SetSquad(instantiatedUnits, controller.player);
                     controller.setNewCosts();
                     break;
             }

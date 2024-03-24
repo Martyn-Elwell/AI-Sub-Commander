@@ -52,9 +52,19 @@ public class RingMenu : MonoBehaviour
             previousMenuItemSc = menuItems[previousSelection].GetComponent<MenuItem>();
             previousMenuItemSc.Deselect();
             previousSelection = selection;
-
-            menuItemSc = menuItems[selection].GetComponent<MenuItem>();
-            menuItemSc.Select();
+            if (menuItems[selection].GetComponent<MA_OrderCommander>() != null)
+            { 
+                if (menuItems[selection].GetComponent<MA_OrderCommander>().getCommander())
+                {
+                    menuItemSc = menuItems[selection].GetComponent<MenuItem>();
+                    menuItemSc.Select();
+                }
+            }
+            else
+            {
+                menuItemSc = menuItems[selection].GetComponent<MenuItem>();
+                menuItemSc.Select();
+            }
         }
     }
     private void UpdateInputs()

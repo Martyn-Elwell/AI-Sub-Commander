@@ -264,7 +264,6 @@ MonoBehaviour:
   baseColour: {r: 0, g: 0, b: 0, a: 0.39215687}
   background: {fileID: 4027787889685609811}
   accent: {fileID: 8056080265688162205}
-  description: {fileID: 0}
 --- !u!1 &1882825183379517867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1085,7 +1084,6 @@ MonoBehaviour:
   baseColour: {r: 0, g: 0, b: 0, a: 0.39215687}
   background: {fileID: 9213707455976590844}
   accent: {fileID: 1882825183379517867}
-  description: {fileID: 0}
 --- !u!1 &4993016858352248638
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,7 +1275,6 @@ MonoBehaviour:
   baseColour: {r: 0, g: 0, b: 0, a: 0.39215687}
   background: {fileID: 1404607528110549662}
   accent: {fileID: 7631865518193948535}
-  description: {fileID: 0}
 --- !u!1 &6907197631043566367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,7 +1712,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3991558541761964967
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1732,8 +1729,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 400, y: 50}
+  m_AnchoredPosition: {x: 0, y: -100}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3168591642794551435
 CanvasRenderer:
@@ -1763,7 +1760,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press F to Interact
+  m_text: 'Q to Prepare Breach
+
+    E to Prepare Cover
+
+    F to Prepare Sabotage'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2037,4 +2038,3 @@ MonoBehaviour:
   baseColour: {r: 0, g: 0, b: 0, a: 0.39215687}
   background: {fileID: 7920166518800991828}
   accent: {fileID: 2076708698355405474}
-  description: {fileID: 0}

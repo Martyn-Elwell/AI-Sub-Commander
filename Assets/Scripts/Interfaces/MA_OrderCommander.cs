@@ -10,8 +10,19 @@ public class MA_OrderCommander : MonoBehaviour, IMenuAction
 
     public void Activate()
     {
-        
-        commander.scatter();
+        Debug.Log(colour.ToString());
+        if (commander != null)
+        {
+            switch (player.currentInteractionType)
+            {
+                case InteractionType.BREACH:
+                    commander.AddObjectToBreach(); break;
+                case InteractionType.COVER:
+                    commander.AddObjectToCover(); break;
+                case InteractionType.SABOTAGE:
+                    commander.AddObjectToSabotage(); break;
+            }
+        }
     }
 
     public void setCommander()
@@ -29,4 +40,6 @@ public class MA_OrderCommander : MonoBehaviour, IMenuAction
                 break;
         }
     }
+
+    public Commander getCommander() { return commander; }
 }
