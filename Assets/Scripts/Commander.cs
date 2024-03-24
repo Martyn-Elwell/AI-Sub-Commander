@@ -5,6 +5,13 @@ using UnityEngine;
 public class Commander : Unit
 {
     [SerializeField] private List<GameObject> squad;
+    [SerializeField] private List<GameObject> units;
+    [SerializeField] private List<GameObject> recons;
+    [SerializeField] private List<GameObject> technicians;
+
+    private List<GameObject> breaches;
+    private List<GameObject> covers;
+    private List<GameObject> sabotages;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +38,19 @@ public class Commander : Unit
     public void SetSquad(List<GameObject> inputList)
     {
         squad = inputList;
+        foreach (GameObject unit in squad)
+        {
+            if (unit == this.gameObject) { continue; }
+            switch (unit.GetComponent<Unit>().type)
+            {
+                case unitEnum.UNIT:
+                    units.Add(unit); break;
+                case unitEnum.RECON:
+                    recons.Add(unit); break;
+                case unitEnum.TECHNICIAN:
+                    technicians.Add(unit); break;
+            }
+        }
     }
 
     public override void DeleteUnit()

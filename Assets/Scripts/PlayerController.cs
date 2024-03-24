@@ -68,13 +68,13 @@ public class PlayerController : MonoBehaviour
             else
             {
                 interactText.SetActive(false);
-                currentInteractable.GetComponent<IInteractable>().Outline(false);
+                if (currentInteractable != null) { currentInteractable.GetComponent<IInteractable>().Outline(false); }
             }
         }
         // Ray did not hit anything
         else
         {
-            currentInteractable.GetComponent<IInteractable>().Outline(false);
+            if (currentInteractable != null) { currentInteractable.GetComponent<IInteractable>().Outline(false); }
         }
 
         // Player walked away from interactable

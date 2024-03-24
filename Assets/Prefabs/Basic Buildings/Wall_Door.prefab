@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4606166359641681788}
   - component: {fileID: 8682658217383672029}
   m_Layer: 10
-  m_Name: Cube (2)
+  m_Name: TopCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 6387514107097117215}
   - component: {fileID: 5860265405706277552}
   m_Layer: 10
-  m_Name: Cube (1)
+  m_Name: RightCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,8 +133,8 @@ Transform:
   m_GameObject: {fileID: 3916294729549281106}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.2, y: 2.4, z: 0.1}
-  m_LocalScale: {x: 0.6, y: 1, z: 0.199}
+  m_LocalPosition: {x: -2.2, y: 1.275, z: 0.1}
+  m_LocalScale: {x: 0.6, y: 3.25, z: 0.199}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 714771650860842868}
@@ -206,7 +206,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 5393197271649329855}
   - component: {fileID: 6800893258597554895}
   m_Layer: 10
-  m_Name: Cube
+  m_Name: LeftCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,8 +238,8 @@ Transform:
   m_GameObject: {fileID: 4237926566545817437}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 2.4, z: 0.1}
-  m_LocalScale: {x: 0.6, y: 1, z: 0.199}
+  m_LocalPosition: {x: -0.3, y: 1.275, z: 0.1}
+  m_LocalScale: {x: 0.6, y: 3.25, z: 0.199}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 714771650860842868}
@@ -311,7 +311,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -326,8 +326,8 @@ GameObject:
   - component: {fileID: 714771650860842868}
   - component: {fileID: 3367530299521640754}
   - component: {fileID: 8929395919240997265}
-  - component: {fileID: 2419146743359289244}
   - component: {fileID: 5211511577649303824}
+  - component: {fileID: 5447566734796435211}
   m_Layer: 0
   m_Name: Wall_Door
   m_TagString: Untagged
@@ -405,27 +405,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2419146743359289244
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7244163254220891142}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.7, y: 4, z: 0.20000052}
-  m_Center: {x: -0.3, y: 0.92860746, z: 0.10000017}
 --- !u!65 &5211511577649303824
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -439,14 +418,29 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.7, y: 4, z: 0.20000052}
-  m_Center: {x: -2.2, y: 0.92860746, z: 0.10000017}
+  m_Size: {x: 1.1, y: 2.3, z: 0.2}
+  m_Center: {x: -1.25, y: 1.15, z: 0}
+--- !u!114 &5447566734796435211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7244163254220891142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ef2ffaeef3644846b6437b317cbd332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modelsToOutline:
+  - {fileID: 9081450762537633578}
+  - {fileID: 8575526682223556606}
 --- !u!1 &8575526682223556606
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,7 +459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &17076348346560639
 Transform:
   m_ObjectHideFlags: 0
