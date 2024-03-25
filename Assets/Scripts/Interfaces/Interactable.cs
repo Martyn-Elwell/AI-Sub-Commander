@@ -6,6 +6,8 @@ public class Interactable : MonoBehaviour, IInteractable
 {
     private LayerMask originalLayer;
     [SerializeField] private List<GameObject> modelsToOutline;
+    [SerializeField] private List<GameObject> unitsInteracting;
+    [SerializeField] private InteractionType interactionType;
 
     public void Start()
     {
@@ -32,5 +34,11 @@ public class Interactable : MonoBehaviour, IInteractable
                 model.layer = originalLayer;
             }
         }
+    }
+
+    public void AssignUnitToObject(GameObject unit, InteractionType type)
+    {
+        unitsInteracting.Add(unit);
+        interactionType = type;
     }
 }

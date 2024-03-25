@@ -19,7 +19,7 @@ public class Commander : Unit
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -65,63 +65,57 @@ public class Commander : Unit
 
     private void AssignSquad()
     {
-        List<GameObject> _units = new List<GameObject>(); List<GameObject> _recons = new List<GameObject>(); List<GameObject> _technicians = new List<GameObject>();
-        _units = units; _recons = recons; _technicians = technicians;
-        List<GameObject> _breaches = new List<GameObject>(); List<GameObject> _covers = new List<GameObject>(); List<GameObject> _sabotages = new List<GameObject>();
-        _breaches = breaches; _covers = covers; _sabotages = sabotages;
+        List<GameObject> _units = new List<GameObject>(units); List<GameObject> _recons = new List<GameObject>(recons); List<GameObject> _technicians = new List<GameObject>(technicians);
+        List<GameObject> _breaches = new List<GameObject>(breaches); List<GameObject> _covers = new List<GameObject>(covers); List<GameObject> _sabotages = new List<GameObject>(sabotages);
         List<GameObject> unitsToRemove = new List<GameObject>();
-        int cycleCount = 0;
 
         // Assign sabotages first
         if (_technicians.Any() && _sabotages.Any())
         {
             foreach (GameObject technician in _technicians)
             {
-                if (cycleCount >= _sabotages.Count) break;
+                if (_sabotages.Count == 0) break;
 
-                AssignTaskToSoldier(technician, _sabotages[cycleCount], InteractionType.SABOTAGE);
+                AssignTaskToSoldier(technician, _sabotages[0], InteractionType.SABOTAGE);
+                _sabotages.RemoveAt(0);
                 unitsToRemove.Add(technician);
-                cycleCount++;
             }
         }
         else { Debug.Log("No Technicians to Sabotage "); }
         _technicians.Except(unitsToRemove).ToList();
         unitsToRemove.Clear();
-        cycleCount = 0;
 
 
         // Assign breaches next
         // Assigns remaining technician to each breach
-        
+
         if (_technicians.Any() && _breaches.Any())
         {
+            int cycleCount = 0;
             foreach (GameObject technician in _technicians)
             {
                 if (_breaches.Count == 0) break;
 
                 AssignTaskToSoldier(technician, breaches[cycleCount % breaches.Count], InteractionType.BREACH);
-                cycleCount++;
 
             }
             technicians.Clear();
         }
 
-        
         // Assign 2 units to each breach
         if (_units.Any() && _breaches.Any())
         {
             int breachSoldierCount = 0;
-            cycleCount = 0;
             foreach (GameObject unit in _units)
             {
-                if (breachSoldierCount >= 2 || cycleCount >= _breaches.Count)
+                if (breachSoldierCount >= 2 || _breaches.Count == 0)
                 {
                     breachSoldierCount = 0;
-                    cycleCount++;
+                    _breaches.RemoveAt(0);
                     break;
                 }
 
-                AssignTaskToSoldier(unit, _breaches[cycleCount], InteractionType.BREACH);
+                AssignTaskToSoldier(unit, _breaches[0], InteractionType.BREACH);
                 unitsToRemove.Add(unit);
                 breachSoldierCount++;
             }
@@ -136,10 +130,10 @@ public class Commander : Unit
         {
             foreach (GameObject recon in _recons)
             {
-                if (cycleCount >= _breaches.Count) break;
+                if (_covers.Count == 0) break;
 
                 AssignTaskToSoldier(recon, _covers[0], InteractionType.COVER);
-                cycleCount++;
+                _covers.RemoveAt(0);
                 unitsToRemove.Add(recon);
             }
         }
@@ -173,12 +167,12 @@ public class Commander : Unit
             {
                 if (_breaches.Count == 0) break;
 
-                AssignTaskToSoldier(unit, breaches[cycleCount % breaches.Count],InteractionType.BREACH);
+                AssignTaskToSoldier(unit, breaches[cycleCount % breaches.Count], InteractionType.BREACH);
             }
         }
         _units.Clear();
 
-        if (_recons.Any() &&_breaches.Any())
+        if (_recons.Any() && _breaches.Any())
         {
             int cycleCount = 0;
             foreach (GameObject recon in _recons)
@@ -196,7 +190,8 @@ public class Commander : Unit
     {
         soldier.GetComponent<Unit>().assignedTask = task;
         soldier.GetComponent<Unit>().taskType = type;
-        soldier.GetComponent<Unit>().SetDestination(task.transform.position);
+        task.GetComponent<Interactable>().AssignUnitToObject(soldier, type);
+        //soldier.GetComponent<Unit>().SetDestination(task.transform.position);
     }
 
     public void AddObjectToBreach()
@@ -207,9 +202,9 @@ public class Commander : Unit
             if (!breaches.Contains(objectToAdd))
             {
                 breaches.Add(objectToAdd);
-            }   
+            }
         }
-        //AssignSquad();
+        AssignSquad();
     }
     public void AddObjectToCover()
     {
@@ -221,7 +216,7 @@ public class Commander : Unit
                 covers.Add(objectToAdd);
             }
         }
-        //AssignSquad();
+        AssignSquad();
     }
     public void AddObjectToSabotage()
     {
