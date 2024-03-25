@@ -70,22 +70,24 @@ public class Commander : Unit
         List<GameObject> _breaches = new List<GameObject>(); List<GameObject> _covers = new List<GameObject>(); List<GameObject> _sabotages = new List<GameObject>();
         _breaches = breaches; _covers = covers; _sabotages = sabotages;
         List<GameObject> unitsToRemove = new List<GameObject>();
+        int cycleCount = 0;
 
         // Assign sabotages first
-        if(_technicians.Any() && _sabotages.Any())
+        if (_technicians.Any() && _sabotages.Any())
         {
             foreach (GameObject technician in _technicians)
             {
-                if (_sabotages.Count == 0) break;
+                if (cycleCount >= _sabotages.Count) break;
 
-                AssignTaskToSoldier(technician, _sabotages[0], InteractionType.SABOTAGE);
-                _sabotages.RemoveAt(0);
+                AssignTaskToSoldier(technician, _sabotages[cycleCount], InteractionType.SABOTAGE);
                 unitsToRemove.Add(technician);
+                cycleCount++;
             }
         }
         else { Debug.Log("No Technicians to Sabotage "); }
         _technicians.Except(unitsToRemove).ToList();
         unitsToRemove.Clear();
+        cycleCount = 0;
 
 
         // Assign breaches next
@@ -93,31 +95,33 @@ public class Commander : Unit
         
         if (_technicians.Any() && _breaches.Any())
         {
-            int cycleCount = 0;
             foreach (GameObject technician in _technicians)
             {
                 if (_breaches.Count == 0) break;
 
                 AssignTaskToSoldier(technician, breaches[cycleCount % breaches.Count], InteractionType.BREACH);
+                cycleCount++;
 
             }
             technicians.Clear();
         }
+
         
         // Assign 2 units to each breach
         if (_units.Any() && _breaches.Any())
         {
             int breachSoldierCount = 0;
+            cycleCount = 0;
             foreach (GameObject unit in _units)
             {
-                if (breachSoldierCount >= 2 || _breaches.Count == 0)
+                if (breachSoldierCount >= 2 || cycleCount >= _breaches.Count)
                 {
                     breachSoldierCount = 0;
-                    _breaches.RemoveAt(0);
+                    cycleCount++;
                     break;
                 }
 
-                AssignTaskToSoldier(unit, _breaches[0], InteractionType.BREACH);
+                AssignTaskToSoldier(unit, _breaches[cycleCount], InteractionType.BREACH);
                 unitsToRemove.Add(unit);
                 breachSoldierCount++;
             }
@@ -132,10 +136,10 @@ public class Commander : Unit
         {
             foreach (GameObject recon in _recons)
             {
-                if (_covers.Count == 0) break;
+                if (cycleCount >= _breaches.Count) break;
 
                 AssignTaskToSoldier(recon, _covers[0], InteractionType.COVER);
-                _covers.RemoveAt(0);
+                cycleCount++;
                 unitsToRemove.Add(recon);
             }
         }
