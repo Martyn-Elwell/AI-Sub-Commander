@@ -767,6 +767,10 @@ PrefabInstance:
       propertyPath: controller
       value: 
       objectReference: {fileID: 1449453925}
+    - target: {fileID: 3332375230320320420, guid: 1510d1d4be9448d4cae641ab71f6a401, type: 3}
+      propertyPath: squadColour
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5000843955946586244, guid: 1510d1d4be9448d4cae641ab71f6a401, type: 3}
       propertyPath: m_Camera
       value: 
@@ -832,6 +836,10 @@ PrefabInstance:
       propertyPath: controller
       value: 
       objectReference: {fileID: 1449453925}
+    - target: {fileID: 3332375230320320420, guid: 1510d1d4be9448d4cae641ab71f6a401, type: 3}
+      propertyPath: squadColour
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5000843955946586244, guid: 1510d1d4be9448d4cae641ab71f6a401, type: 3}
       propertyPath: m_Camera
       value: 

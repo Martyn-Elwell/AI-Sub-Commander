@@ -8,7 +8,8 @@ public interface IInteractable
 
 public enum InteractionType
 {
-    BREACH = 0,
-    COVER = 1,
-    SABOTAGE = 2,
+    NONE = 0,
+    BREACH = 1,
+    COVER = 2,
+    SABOTAGE = 3,
 }

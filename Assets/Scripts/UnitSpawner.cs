@@ -14,6 +14,7 @@ public class UnitSpawner : MonoBehaviour
     public bool active = false;
 
     private List<GameObject> prefabs = new List<GameObject>();
+    [SerializeField] squad squadColour;
 
     [Header("Counts")]
     [SerializeField] private int commanderCount;
@@ -143,7 +144,13 @@ public class UnitSpawner : MonoBehaviour
 
 
                 GameObject instantiatedUnit = Instantiate(prefabs[index], unitSpawnpoint.position + offset, transform.rotation);
-                if (instantiatedUnit.GetComponent<Unit>() != null) { instantiatedUnit.GetComponent<Unit>().SetSpawn(this); }
+                if (instantiatedUnit.GetComponent<Unit>() != null)
+                {
+                    instantiatedUnit.GetComponent<Unit>().SetSpawn(this);
+                    List<string> namePrefixs = new List<string>(); namePrefixs.Add("Commander"); namePrefixs.Add("Unit"); namePrefixs.Add("Technician"); namePrefixs.Add("Recon");
+
+                    instantiatedUnit.name = squadColour.ToString() + " " + namePrefixs[index] + " " + (y*columns + x + 1).ToString();
+                }
                 //instantiatedUnit.GetComponentInChildren<Canvas>().worldCamera = controller.overheadCamera;
                 instantiatedUnits.Add(instantiatedUnit);
 

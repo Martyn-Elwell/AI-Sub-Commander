@@ -65,9 +65,19 @@ public class Commander : Unit
 
     private void AssignSquad()
     {
+        Debug.Log("Reassinging Squad");
         List<GameObject> _units = new List<GameObject>(units); List<GameObject> _recons = new List<GameObject>(recons); List<GameObject> _technicians = new List<GameObject>(technicians);
         List<GameObject> _breaches = new List<GameObject>(breaches); List<GameObject> _covers = new List<GameObject>(covers); List<GameObject> _sabotages = new List<GameObject>(sabotages);
         List<GameObject> unitsToRemove = new List<GameObject>();
+
+        foreach (GameObject unit in squad)
+        {
+            if (unit != this.gameObject)
+            {
+                unit.GetComponent<Unit>().ClearTask();
+            }
+        }
+
 
         // Assign sabotages first
         if (_technicians.Any() && _sabotages.Any())
@@ -81,8 +91,8 @@ public class Commander : Unit
                 unitsToRemove.Add(technician);
             }
         }
-        else { Debug.Log("No Technicians to Sabotage "); }
-        _technicians.Except(unitsToRemove).ToList();
+        else { /*Debug.Log("No Technicians to Sabotage ");*/ }
+        foreach (GameObject unit in unitsToRemove) { _technicians.Remove(unit); }
         unitsToRemove.Clear();
 
 
@@ -99,8 +109,8 @@ public class Commander : Unit
                 AssignTaskToSoldier(technician, breaches[cycleCount % breaches.Count], InteractionType.BREACH);
 
             }
-            technicians.Clear();
         }
+        _technicians.Clear();
 
         // Assign 2 units to each breach
         if (_units.Any() && _breaches.Any())
@@ -120,8 +130,8 @@ public class Commander : Unit
                 breachSoldierCount++;
             }
         }
-        else { Debug.Log("No Units to Breach"); }
-        _units.Except(unitsToRemove).ToList();
+        else { /*Debug.Log("No Units to Breach");*/ }
+        foreach (GameObject unit in unitsToRemove) { _units.Remove(unit); }
         unitsToRemove.Clear();
 
 
@@ -137,8 +147,8 @@ public class Commander : Unit
                 unitsToRemove.Add(recon);
             }
         }
-        else { Debug.Log("No Recons to Cover "); }
-        _recons.Except(unitsToRemove).ToList();
+        else { /*Debug.Log("No Recons to Cover ");*/ }
+        foreach (GameObject unit in unitsToRemove) { _recons.Remove(unit); }
         unitsToRemove.Clear();
 
 
@@ -154,8 +164,8 @@ public class Commander : Unit
                 unitsToRemove.Add(unit);
             }
         }
-        else { Debug.Log("No Unit to Cover "); }
-        _units.Except(unitsToRemove).ToList();
+        else { /*Debug.Log("No Unit to Cover ");*/ }
+        foreach (GameObject unit in unitsToRemove) { _units.Remove(unit); }
         unitsToRemove.Clear();
 
 
@@ -183,15 +193,13 @@ public class Commander : Unit
             }
         }
         _recons.Clear();
-
     }
 
     private void AssignTaskToSoldier(GameObject soldier, GameObject task, InteractionType type)
     {
-        soldier.GetComponent<Unit>().assignedTask = task;
-        soldier.GetComponent<Unit>().taskType = type;
+        soldier.GetComponent<Unit>().AssignTask(task, type);
         task.GetComponent<Interactable>().AssignUnitToObject(soldier, type);
-        //soldier.GetComponent<Unit>().SetDestination(task.transform.position);
+        soldier.GetComponent<Unit>().SetDestination(task.transform.position);
     }
 
     public void AddObjectToBreach()
@@ -203,6 +211,16 @@ public class Commander : Unit
             {
                 breaches.Add(objectToAdd);
             }
+
+            if (covers.Contains(objectToAdd))
+            {
+                covers.Remove(objectToAdd);
+            }
+
+            if (sabotages.Contains(objectToAdd))
+            {
+                sabotages.Remove(objectToAdd);
+            }
         }
         AssignSquad();
     }
@@ -211,9 +229,19 @@ public class Commander : Unit
         GameObject objectToAdd = player.GetComponent<PlayerController>().GetCurrentInteractable();
         if (objectToAdd != null)
         {
+            if (breaches.Contains(objectToAdd))
+            {
+                breaches.Remove(objectToAdd);
+            }
+
             if (!covers.Contains(objectToAdd))
             {
                 covers.Add(objectToAdd);
+            }
+
+            if (sabotages.Contains(objectToAdd))
+            {
+                sabotages.Remove(objectToAdd);
             }
         }
         AssignSquad();
@@ -223,7 +251,17 @@ public class Commander : Unit
         GameObject objectToAdd = player.GetComponent<PlayerController>().GetCurrentInteractable();
         if (objectToAdd != null)
         {
-            if (!covers.Contains(objectToAdd))
+            if (breaches.Contains(objectToAdd))
+            {
+                breaches.Remove(objectToAdd);
+            }
+
+            if (covers.Contains(objectToAdd))
+            {
+                covers.Remove(objectToAdd);
+            }
+
+            if (!sabotages.Contains(objectToAdd))
             {
                 sabotages.Add(objectToAdd);
             }

@@ -2343,7 +2343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7244163254220891142, guid: a442c83b1775f6f4ea3be1b5b775c4ef, type: 3}
       propertyPath: m_Name
-      value: Wall_Door
+      value: Front Door
       objectReference: {fileID: 0}
     - target: {fileID: 7244163254220891142, guid: a442c83b1775f6f4ea3be1b5b775c4ef, type: 3}
       propertyPath: m_IsActive
@@ -2425,7 +2425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5682632895309447685, guid: 8e919821ce2f1154a9a91af9c8648b3c, type: 3}
       propertyPath: m_Name
-      value: Wall_Window
+      value: Side_Window
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4465,7 +4465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5682632895309447685, guid: 8e919821ce2f1154a9a91af9c8648b3c, type: 3}
       propertyPath: m_Name
-      value: Wall_Window
+      value: Front Window
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4663,7 +4663,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5682632895309447685, guid: 8e919821ce2f1154a9a91af9c8648b3c, type: 3}
       propertyPath: m_Name
-      value: Wall_Window
+      value: Desk_Window
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4857,7 +4857,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5682632895309447685, guid: 8e919821ce2f1154a9a91af9c8648b3c, type: 3}
       propertyPath: m_Name
-      value: Wall_Window
+      value: LivingRoom Window
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8240,7 +8240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5682632895309447685, guid: 8e919821ce2f1154a9a91af9c8648b3c, type: 3}
       propertyPath: m_Name
-      value: Wall_Window
+      value: Bathroom_Window
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8968,7 +8968,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7244163254220891142, guid: a442c83b1775f6f4ea3be1b5b775c4ef, type: 3}
       propertyPath: m_Name
-      value: Wall_Door
+      value: Back Door
       objectReference: {fileID: 0}
     - target: {fileID: 7244163254220891142, guid: a442c83b1775f6f4ea3be1b5b775c4ef, type: 3}
       propertyPath: m_IsActive

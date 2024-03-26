@@ -23,7 +23,6 @@ public class Unit : MonoBehaviour
 
     public void SetDestination(Vector3 newPos)
     {
-        Debug.Log("moving");
         agent.SetDestination(newPos);
     }
 
@@ -48,5 +47,17 @@ public class Unit : MonoBehaviour
     public void SetSpawn(UnitSpawner us)
     {
         spawnZone = us;
+    }
+
+    public void AssignTask(GameObject obj, InteractionType type)
+    {
+        assignedTask = obj;
+        taskType = type;
+    }
+    
+    public void ClearTask()
+    {
+        assignedTask = null;
+        taskType = InteractionType.NONE;
     }
 }

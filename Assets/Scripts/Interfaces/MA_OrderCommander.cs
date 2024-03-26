@@ -10,7 +10,6 @@ public class MA_OrderCommander : MonoBehaviour, IMenuAction
 
     public void Activate()
     {
-        Debug.Log(colour.ToString());
         if (commander != null)
         {
             switch (player.currentInteractionType)
