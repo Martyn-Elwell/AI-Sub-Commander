@@ -269,6 +269,10 @@ MonoBehaviour:
   - {fileID: 3760438258551295602}
   - {fileID: 3760269932658118526}
   - {fileID: 3760382528340302198}
+  unitsInteracting: []
+  primaryInteraction: 3
+  secondaryInteraction: 0
+  currentInteractionType: 0
 --- !u!65 &5873986666808872727
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -21,8 +22,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject interactText;
     [SerializeField] private float interactDistance = 5f;
 
+    [Header("Current Interactable References")]
     public GameObject currentInteractable = null;
-    [HideInInspector] public InteractionType currentInteractionType;
+    public InteractionType currentInteractionType;
+    [HideInInspector] public InteractionType primaryInteractionType;
+    [HideInInspector] public InteractionType secondaryInteractionType;
 
     private void Awake()
     {
@@ -44,24 +48,20 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateInputs()
     {
-        // Left Mouse Button
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            currentInteractionType = InteractionType.BREACH;
-            Debug.Log(currentInteractionType);
-            InteractWithObject();
-        }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            currentInteractionType = InteractionType.COVER;
+            currentInteractionType = primaryInteractionType;
             Debug.Log(currentInteractionType);
             InteractWithObject();
         }
-        if (Input.GetKeyDown(KeyCode.F))
+        if (secondaryInteractionType != InteractionType.NONE)
         {
-            currentInteractionType = InteractionType.SABOTAGE;
-            Debug.Log(currentInteractionType);
-            InteractWithObject();
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                currentInteractionType = secondaryInteractionType;
+                Debug.Log(currentInteractionType);
+                InteractWithObject();
+            }
         }
     }
 
@@ -75,9 +75,7 @@ public class PlayerController : MonoBehaviour
             // Ray hit interactable
             if (interactable != null)
             {
-                interactText.SetActive(true);
-                interactable.Outline(true);
-                currentInteractable = hitObject;
+                DisplayInteractions(hitObject, interactable);
             }
             // Ray hit non interactable
             else
@@ -103,6 +101,55 @@ public class PlayerController : MonoBehaviour
                 LockCursor(true);
             }
         }
+    }
+
+    private void DisplayInteractions(GameObject hitObject, IInteractable interactable)
+    {
+        interactable.Outline(true);
+        currentInteractable = hitObject;
+
+        string interactString = "";
+        primaryInteractionType = hitObject.GetComponent<Interactable>().primaryInteraction;
+        secondaryInteractionType = hitObject.GetComponent<Interactable>().secondaryInteraction;
+        switch (primaryInteractionType)
+        {
+            case InteractionType.NONE:
+                break;
+            case InteractionType.BREACH:
+                interactString += "Press E to Prepare Breach\n";
+                break;
+            case InteractionType.COVER:
+                interactString += "Press E to Prepare Cover\n";
+                break;
+            case InteractionType.SABOTAGE:
+                interactString += "Press E to Prepare Sabotage\n";
+                break;
+        }
+
+        switch (secondaryInteractionType)
+        {
+            case InteractionType.NONE:
+                break;
+            case InteractionType.BREACH:
+                interactString += "Press F to Prepare Breach";
+                break;
+            case InteractionType.COVER:
+                interactString += "Press F to Prepare Cover";
+                break;
+            case InteractionType.SABOTAGE:
+                interactString += "Press F to Prepare Sabotage";
+                break;
+        }
+
+        if (primaryInteractionType == secondaryInteractionType)
+        {
+            secondaryInteractionType = InteractionType.NONE;
+        }
+
+
+        interactText.GetComponent<TextMeshProUGUI>().text = interactString;
+        interactText.SetActive(true);
+        
     }
 
 

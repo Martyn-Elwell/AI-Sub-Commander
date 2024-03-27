@@ -441,6 +441,10 @@ MonoBehaviour:
   modelsToOutline:
   - {fileID: 9081450762537633578}
   - {fileID: 8575526682223556606}
+  unitsInteracting: []
+  primaryInteraction: 1
+  secondaryInteraction: 0
+  currentInteractionType: 0
 --- !u!1 &8575526682223556606
 GameObject:
   m_ObjectHideFlags: 0
