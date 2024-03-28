@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4238796232636237793
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2494673803105541687}
+  - component: {fileID: 7724116535577096856}
+  m_Layer: 0
+  m_Name: SpawnController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2494673803105541687
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4238796232636237793}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7724116535577096856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4238796232636237793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f53089f8ce98b64fa5b741d8f037d54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overheadCamera: {fileID: 0}
+  player: {fileID: 0}
+  spawners: []
+  Prefab: {fileID: 0}
+  commanderPrefab: {fileID: 1883931202592232552, guid: 53c75097477accf43bb76b242475e321, type: 3}
+  unitPrefab: {fileID: 1883931202592232552, guid: 17e8c74aa2ec17a4e90832fb2988660d, type: 3}
+  technicianPrefab: {fileID: 1883931202592232552, guid: 5280ed450e22b054fb3d5c5382dc287e, type: 3}
+  reconPrefab: {fileID: 1883931202592232552, guid: baf8ed4fab223d84dbbe5067a4aaa930, type: 3}
+  currentUnit: 0
+  unitCost: 1
+  technicianCost: 2
+  reconCost: 2
+  commanderCost: 3
+  maxUnitCost: 10
+  totalUnitCost: 0
+  unitCostText: {fileID: 0}
+  commanderCount: 0
+  unitCount: 0
+  technicianCount: 0
+  reconCount: 0
