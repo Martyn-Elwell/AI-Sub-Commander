@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Window : Interactable
 {
-
+    public List<Transform> standingPoints;
 }

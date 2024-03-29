@@ -153,9 +153,9 @@ public class Commander : Unit
                 // Has two base units to breach
                 else if (_units.Count >= 2)
                 {
-                    AssignTaskToSoldier(_units[0], breach, InteractionType.BREACH);
+                    AssignTaskToSoldier(_units[0], breach, breach.GetComponent<Window>().standingPoints[0].position,InteractionType.BREACH);
                     _units.RemoveAt(0);
-                    AssignTaskToSoldier(_units[0], breach, InteractionType.BREACH);
+                    AssignTaskToSoldier(_units[0], breach, breach.GetComponent<Window>().standingPoints[1].position, InteractionType.BREACH);
                     _units.RemoveAt(0);
                     totalBreachUnitCount = _units.Count + technicians.Count;
                 }
@@ -181,6 +181,13 @@ public class Commander : Unit
         soldier.GetComponent<Unit>().AssignTask(task, type);
         task.GetComponent<Interactable>().AssignUnitToObject(soldier, type);
         soldier.GetComponent<Unit>().SetDestination(task.transform.position);
+    }
+
+    private void AssignTaskToSoldier(GameObject soldier, GameObject task, Vector3 position, InteractionType type)
+    {
+        soldier.GetComponent<Unit>().AssignTask(task, type);
+        task.GetComponent<Interactable>().AssignUnitToObject(soldier, type);
+        soldier.GetComponent<Unit>().SetDestination(position);
     }
 
     public void AddObjectToBreach()

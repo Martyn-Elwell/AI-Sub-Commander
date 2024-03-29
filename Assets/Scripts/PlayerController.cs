@@ -51,7 +51,6 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             currentInteractionType = primaryInteractionType;
-            Debug.Log(currentInteractionType);
             InteractWithObject();
         }
         if (secondaryInteractionType != InteractionType.NONE)
@@ -59,7 +58,6 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 currentInteractionType = secondaryInteractionType;
-                Debug.Log(currentInteractionType);
                 InteractWithObject();
             }
         }
