@@ -8,6 +8,7 @@ TagManager:
   - Commander
   - Technician
   - Recon
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - IgnoreTopDown
   - IgnorePOV
   - Outline
-  - 
+  - Enemy
   - 
   - 
   - 

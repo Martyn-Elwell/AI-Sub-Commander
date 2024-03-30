@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Character
 {
     public Transform initalSpawnPoint;
     public EnemyState state = EnemyState.IDLE;
+
     private NavMeshAgent agent;
 
     [Header("Mesh")]
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         Mesh.GetComponent<Renderer>().material = materials[Random.Range(0, materials.Count - 1)];
+        blood = GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -36,6 +38,8 @@ public class Enemy : MonoBehaviour
         animationName = animationString;
         animator.Play(animationName);
     }
+
+
 }
 
 public enum EnemyState

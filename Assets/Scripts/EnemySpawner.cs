@@ -45,11 +45,14 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach (GameObject enemy in enemies)
         {
-            if (enemy.GetComponent<Enemy>().state == EnemyState.IDLE)
+            if (enemy != null && enemy.GetComponent<Enemy>() != null)
             {
-                enemy.transform.position = enemy.GetComponent<Enemy>().initalSpawnPoint.position;
-                enemy.transform.rotation = enemy.GetComponent<Enemy>().initalSpawnPoint.rotation;
-            }
+                if (enemy.GetComponent<Enemy>().state == EnemyState.IDLE)
+                {
+                    enemy.transform.position = enemy.GetComponent<Enemy>().initalSpawnPoint.position;
+                    enemy.transform.rotation = enemy.GetComponent<Enemy>().initalSpawnPoint.rotation;
+                }
+            }  
         }
     }
 }
