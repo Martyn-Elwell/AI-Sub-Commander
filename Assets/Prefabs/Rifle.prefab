@@ -14518,8 +14518,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3742008619254128750}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.007751359, y: 0.9056149, z: 0.0024945445, w: 0.4240228}
-  m_LocalPosition: {x: -7.265, y: 1.05, z: -3.806}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14532,7 +14532,7 @@ Transform:
   - {fileID: 8043243484785344057}
   - {fileID: 6130946298002500049}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -0.636, y: 129.824, z: -0.683}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4054580370426564843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14545,7 +14545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9b8ff9a239b6d46aab4643178e7ab6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 20
   shooting: 0
   shootingFX: {fileID: 0}
 --- !u!33 &3949801219920927834

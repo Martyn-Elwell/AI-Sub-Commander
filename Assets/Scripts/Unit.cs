@@ -23,6 +23,7 @@ public class Unit : Character
     [Header("Task Referencs")]
     public GameObject assignedTask;
     public InteractionType taskType;
+    public Vector3 destination;
 
 
 
@@ -36,6 +37,7 @@ public class Unit : Character
 
     public void SetDestination(Vector3 newPos)
     {
+        destination = newPos;
         agent.SetDestination(newPos);
     }
 

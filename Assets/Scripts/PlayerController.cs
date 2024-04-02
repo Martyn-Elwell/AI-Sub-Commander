@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
 
     private Transform cameraTransform;
+    public Gun gun;
 
     [Header("Commander References")]
     [SerializeField] private UnitSpawner redZone;
@@ -27,6 +28,9 @@ public class PlayerController : MonoBehaviour
     public InteractionType currentInteractionType;
     [HideInInspector] public InteractionType primaryInteractionType;
     [HideInInspector] public InteractionType secondaryInteractionType;
+
+    [Header("NavMesh References")]
+    public NavMeshController nav;
 
     private void Awake()
     {
@@ -48,6 +52,10 @@ public class PlayerController : MonoBehaviour
 
     private void UpdateInputs()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            gun.Shoot();
+        }
         if (Input.GetKeyDown(KeyCode.E))
         {
             currentInteractionType = primaryInteractionType;
@@ -178,6 +186,24 @@ public class PlayerController : MonoBehaviour
             LockCursor(true);
             ringMenu.SetActive(false);
 
+        }
+    }
+
+    public void OrderBreach()
+    {
+        Debug.Log("Orderring");
+        nav.ClearObstacles();
+        if (redCommander != null)
+        {
+            redCommander.AllUnitsBreach();
+        }
+        if (greenCommander != null)
+        {
+            greenCommander.AllUnitsBreach();
+        }
+        if (yellowCommander != null)
+        {
+            yellowCommander.AllUnitsBreach();
         }
     }
 

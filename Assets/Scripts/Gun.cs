@@ -13,6 +13,11 @@ public class Gun : MonoBehaviour
     {
         shootingFX = GetComponent<ParticleSystem>();
     }
+
+    public void Shoot()
+    {
+        shootingFX.Play();
+    }
     public void StartShooting()
     {
         if (!shooting) {

@@ -5,8 +5,11 @@ using UnityEngine;
 public class Interactable : MonoBehaviour, IInteractable
 {
     private LayerMask originalLayer;
+    private GameObject room;
     [SerializeField] private List<GameObject> modelsToOutline;
-    [SerializeField] private List<GameObject> unitsInteracting;
+    [SerializeField] public List<GameObject> assignedUnits;
+    [SerializeField] public List<GameObject> navigationPoints;
+    [SerializeField] public List<Transform> standingPoints;
     [SerializeField] public InteractionType primaryInteraction;
     [SerializeField] public InteractionType secondaryInteraction;
     [SerializeField] private InteractionType currentInteraction;
@@ -14,10 +17,10 @@ public class Interactable : MonoBehaviour, IInteractable
     public void Start()
     {
         originalLayer = transform.gameObject.layer;
+        room = transform.parent.parent.gameObject;
     }
     public void Interact()
     {
-        Debug.Log("Interacted");
     }
 
     public void Outline(bool active)
@@ -40,12 +43,12 @@ public class Interactable : MonoBehaviour, IInteractable
 
     public void AssignUnitToObject(GameObject unit, InteractionType type)
     {
-        unitsInteracting.Add(unit);
+        assignedUnits.Add(unit);
         currentInteraction = type;
     }
     public void ClearUnits()
     {
-        unitsInteracting.Clear();
+        assignedUnits.Clear();
         currentInteraction = InteractionType.NONE;
     }
 }

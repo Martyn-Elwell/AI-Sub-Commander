@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4761804377012920477}
   m_Layer: 0
-  m_Name: Point (1)
+  m_Name: Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,11 +176,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2657444548680288757}
+  - component: {fileID: 84479468929208527}
   - component: {fileID: 1599677746238215174}
   - component: {fileID: 7417817870311879559}
   - component: {fileID: 5716213264017091621}
-  - component: {fileID: 84479468929208527}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Wall_Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -196,7 +196,7 @@ Transform:
   m_GameObject: {fileID: 5682632895309447685}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.131522, y: -0.009999752, z: 0.14643955}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -211,6 +211,31 @@ Transform:
   - {fileID: 4761804377012920477}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &84479468929208527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5682632895309447685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca02f54e59f76f542b25216334c0e748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  modelsToOutline:
+  - {fileID: 7676145143340129880}
+  - {fileID: 7676295959673913274}
+  assignedUnits: []
+  navigationPoints: []
+  standingPoints:
+  - {fileID: 4328670370369432929}
+  - {fileID: 1420063261963728997}
+  - {fileID: 5061538083464792586}
+  - {fileID: 4761804377012920477}
+  primaryInteraction: 1
+  secondaryInteraction: 2
+  currentInteraction: 0
 --- !u!33 &1599677746238215174
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -283,30 +308,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 2.5, z: 0.2}
   m_Center: {x: -1.25, y: 1.25, z: 0.1}
---- !u!114 &84479468929208527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5682632895309447685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca02f54e59f76f542b25216334c0e748, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modelsToOutline:
-  - {fileID: 7676145143340129880}
-  - {fileID: 7676295959673913274}
-  unitsInteracting: []
-  primaryInteraction: 1
-  secondaryInteraction: 2
-  currentInteraction: 0
-  standingPoints:
-  - {fileID: 4328670370369432929}
-  - {fileID: 1420063261963728997}
-  - {fileID: 5061538083464792586}
-  - {fileID: 4761804377012920477}
 --- !u!1 &6495903022811545400
 GameObject:
   m_ObjectHideFlags: 0

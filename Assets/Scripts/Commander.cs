@@ -91,7 +91,7 @@ public class Commander : Unit
             {
                 if (_technicians.Count == 0) break;
 
-                AssignTaskToSoldier(_technicians[0], sabotage, InteractionType.SABOTAGE);
+                AssignTaskToSoldier(_technicians[0], sabotage, sabotage.GetComponent<Interactable>().standingPoints[0].position, InteractionType.SABOTAGE);
                 _technicians.RemoveAt(0);
             }
         }
@@ -105,7 +105,7 @@ public class Commander : Unit
             {
                 if (_covers.Count == 0) break;
 
-                AssignTaskToSoldier(_recons[0], _covers[0], InteractionType.COVER);
+                AssignTaskToSoldier(_recons[0], _covers[0], cover.GetComponent<Interactable>().standingPoints[0].position, InteractionType.COVER);
                 _recons.RemoveAt(0);
             }
         }
@@ -126,14 +126,14 @@ public class Commander : Unit
                     // If there is an odd number assign final unit to intial breach
                     if (_technicians.Count == 1)
                     {
-                        AssignTaskToSoldier(_technicians[0], breaches[0], InteractionType.BREACH);
+                        AssignTaskToSoldier(_technicians[0], breaches[0], breach.GetComponent<Interactable>().standingPoints[2].position, InteractionType.BREACH);
                         _technicians.RemoveAt(0);
                         totalBreachUnitCount = _units.Count + technicians.Count;
                     }
                     // If there is an odd number assign final unit to intial breach
                     else if (_units.Count == 1)
                     {
-                        AssignTaskToSoldier(_units[0], breaches[0], InteractionType.BREACH);
+                        AssignTaskToSoldier(_units[0], breaches[0], breach.GetComponent<Interactable>().standingPoints[2].position, InteractionType.BREACH);
                         _units.RemoveAt(0);
                         totalBreachUnitCount = _units.Count + technicians.Count;
                     }
@@ -144,18 +144,18 @@ public class Commander : Unit
                 // Has a technician to lead breach
                 if (_technicians.Count >= 1 && _units.Count >= 1)
                 {
-                    AssignTaskToSoldier(_technicians[0], breach, InteractionType.BREACH);
+                    AssignTaskToSoldier(_technicians[0], breach, breach.GetComponent<Interactable>().standingPoints[0].position, InteractionType.BREACH);
                     _technicians.RemoveAt(0);
-                    AssignTaskToSoldier(_units[0], breach, InteractionType.BREACH);
+                    AssignTaskToSoldier(_units[0], breach, breach.GetComponent<Interactable>().standingPoints[1].position, InteractionType.BREACH);
                     _units.RemoveAt(0);
                     totalBreachUnitCount = _units.Count + technicians.Count;
                 }
                 // Has two base units to breach
                 else if (_units.Count >= 2)
                 {
-                    AssignTaskToSoldier(_units[0], breach, breach.GetComponent<Window>().standingPoints[0].position,InteractionType.BREACH);
+                    AssignTaskToSoldier(_units[0], breach, breach.GetComponent<Interactable>().standingPoints[0].position,InteractionType.BREACH);
                     _units.RemoveAt(0);
-                    AssignTaskToSoldier(_units[0], breach, breach.GetComponent<Window>().standingPoints[1].position, InteractionType.BREACH);
+                    AssignTaskToSoldier(_units[0], breach, breach.GetComponent<Interactable>().standingPoints[1].position, InteractionType.BREACH);
                     _units.RemoveAt(0);
                     totalBreachUnitCount = _units.Count + technicians.Count;
                 }
@@ -188,6 +188,24 @@ public class Commander : Unit
         soldier.GetComponent<Unit>().AssignTask(task, type);
         task.GetComponent<Interactable>().AssignUnitToObject(soldier, type);
         soldier.GetComponent<Unit>().SetDestination(position);
+    }
+
+    public void AllUnitsBreach()
+    {
+        foreach (GameObject unit in squad)
+        {
+            unit.GetComponent<Unit>().active = true;
+        }
+
+        foreach (GameObject breach in breaches)
+        {
+            for (int i = 0; i < breach.GetComponent<Interactable>().assignedUnits.Count(); i++)
+            {
+                Vector3 destination = breach.GetComponent<Interactable>().navigationPoints[i].transform.position;
+                breach.GetComponent<Interactable>().assignedUnits[i].GetComponent<Unit>().SetDestination(destination);
+            }
+
+        }
     }
 
     public void AddObjectToBreach()

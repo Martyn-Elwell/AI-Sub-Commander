@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Enemy : Character
 {
+    public GameObject room;
     public Transform initalSpawnPoint;
     public EnemyState state = EnemyState.IDLE;
 
