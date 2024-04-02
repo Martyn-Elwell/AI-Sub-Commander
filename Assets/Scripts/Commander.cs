@@ -117,7 +117,7 @@ public class Commander : Unit
         if (_breaches.Any())
         {
             int totalBreachUnitCount = _units.Count + technicians.Count;
-            if (totalBreachUnitCount >= _breaches.Count * 2) { Debug.Log("Enough breach units to breach all objects");  }
+            if (totalBreachUnitCount >= _breaches.Count * 2) { /*Debug.Log("Enough breach units to breach all objects");*/  }
             foreach (GameObject breach in _breaches)
             {
                 if (totalBreachUnitCount < 2)

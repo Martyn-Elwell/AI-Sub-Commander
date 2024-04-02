@@ -191,7 +191,6 @@ public class PlayerController : MonoBehaviour
 
     public void OrderBreach()
     {
-        Debug.Log("Orderring");
         nav.ClearObstacles();
         if (redCommander != null)
         {
