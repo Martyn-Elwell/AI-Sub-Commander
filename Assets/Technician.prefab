@@ -424,19 +424,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cb16b84d3f5754da186e156de9ed54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
+  blood: {fileID: 0}
   type: 3
+  state: 0
   active: 0
   radius: 10
   rotationSpeed: 2
-  gun: {fileID: 0}
+  gun: {fileID: 2622359032934303257}
   enemyMask:
     serializedVersion: 2
     m_Bits: 4096
   obstructionMask:
     serializedVersion: 2
     m_Bits: 4095
+  flashbang: {fileID: 1084136319696526, guid: 19b59b1af0002274abe246a3dbb4a9ad, type: 3}
   assignedTask: {fileID: 0}
   taskType: 0
+  destination: {x: 0, y: 0, z: 0}
 --- !u!95 &7460461146257387752
 Animator:
   serializedVersion: 5
@@ -3060,6 +3065,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 280a2cb887081a54985d456e91f2a932, type: 3}
+--- !u!114 &2622359032934303257 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4054580370426564843, guid: 280a2cb887081a54985d456e91f2a932, type: 3}
+  m_PrefabInstance: {fileID: 2026829808488027890}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9b8ff9a239b6d46aab4643178e7ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8568018967769726409 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7694128538502507323, guid: 280a2cb887081a54985d456e91f2a932, type: 3}

@@ -198,7 +198,7 @@ public class Commander : Unit
     {
         foreach (GameObject unit in squad)
         {
-            unit.GetComponent<Unit>().active = true;
+            unit.GetComponent<Unit>().Activate();
         }
 
         foreach (GameObject breach in breaches)

@@ -28,6 +28,7 @@ public class Unit : Character
     public Gun gun;
     public LayerMask enemyMask;
     public LayerMask obstructionMask;
+    public GameObject flashbang;
 
     [Header("Task Referencs")]
     public GameObject assignedTask;
@@ -127,8 +128,13 @@ public class Unit : Character
 
     public void Activate()
     {
+        Debug.LogWarning("bhnfsadiofn");
         active = true;
         state = unitState.SEARCHING;
+        if (type == unitEnum.TECHNICIAN)
+        {
+            Invoke("Flash", 1f);
+        }
     }
 
     public virtual void DeleteUnit()
@@ -151,5 +157,11 @@ public class Unit : Character
     {
         assignedTask = null;
         taskType = InteractionType.NONE;
+    }
+
+    public void Flash()
+    {
+        GameObject grenade = Instantiate(flashbang, transform.position, transform.rotation);
+        Destroy(grenade, 3f);
     }
 }
