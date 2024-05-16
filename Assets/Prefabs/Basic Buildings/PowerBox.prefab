@@ -301,13 +301,14 @@ MonoBehaviour:
   - {fileID: 3760438258551295602}
   - {fileID: 3760269932658118526}
   - {fileID: 3760382528340302198}
-  unitsInteracting: []
+  assignedUnits: []
   navigationPoints: []
   standingPoints:
   - {fileID: 6289602278189627498}
   primaryInteraction: 3
   secondaryInteraction: 0
   currentInteraction: 0
+  sparksPrefab: {fileID: 1303429800363182, guid: 4c16b479226437c45b72bf6259f23dc9, type: 3}
 --- !u!65 &5873986666808872727
 BoxCollider:
   m_ObjectHideFlags: 0

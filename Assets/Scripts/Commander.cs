@@ -210,6 +210,12 @@ public class Commander : Unit
             }
 
         }
+
+        foreach (GameObject sabotage in sabotages)
+        {
+            sabotage.GetComponent<PowerBox>().Sabotage();
+
+        }
     }
 
     public void AddObjectToBreach()
