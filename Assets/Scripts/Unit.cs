@@ -108,6 +108,7 @@ public class Unit : Character
             }
             if (target != null)
             {
+                SetDestination(target.position);
                 Vector3 direction = target.position - transform.position;
                 Quaternion rotation = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
