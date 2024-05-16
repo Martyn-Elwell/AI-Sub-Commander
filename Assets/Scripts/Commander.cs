@@ -113,11 +113,10 @@ public class Commander : Unit
 
         // Assign breaches last
         // Assigns remaining technician to each breach
-
         if (_breaches.Any())
         {
             int totalBreachUnitCount = _units.Count + technicians.Count;
-            if (totalBreachUnitCount >= _breaches.Count * 2) { /*Debug.Log("Enough breach units to breach all objects");*/  }
+            if (totalBreachUnitCount >= _breaches.Count * 2) {  }
             foreach (GameObject breach in _breaches)
             {
                 if (totalBreachUnitCount < 2)
@@ -126,14 +125,16 @@ public class Commander : Unit
                     // If there is an odd number assign final unit to intial breach
                     if (_technicians.Count == 1)
                     {
-                        AssignTaskToSoldier(_technicians[0], breaches[0], breach.GetComponent<Interactable>().standingPoints[2].position, InteractionType.BREACH);
+                        AssignTaskToSoldier(_technicians[0], breaches[0],
+                            breach.GetComponent<Interactable>().standingPoints[2].position, InteractionType.BREACH);
                         _technicians.RemoveAt(0);
                         totalBreachUnitCount = _units.Count + technicians.Count;
                     }
                     // If there is an odd number assign final unit to intial breach
                     else if (_units.Count == 1)
                     {
-                        AssignTaskToSoldier(_units[0], breaches[0], breach.GetComponent<Interactable>().standingPoints[2].position, InteractionType.BREACH);
+                        AssignTaskToSoldier(_units[0], breaches[0],
+                            breach.GetComponent<Interactable>().standingPoints[2].position, InteractionType.BREACH);
                         _units.RemoveAt(0);
                         totalBreachUnitCount = _units.Count + technicians.Count;
                     }
@@ -144,24 +145,27 @@ public class Commander : Unit
                 // Has a technician to lead breach
                 if (_technicians.Count >= 1 && _units.Count >= 1)
                 {
-                    AssignTaskToSoldier(_technicians[0], breach, breach.GetComponent<Interactable>().standingPoints[0].position, InteractionType.BREACH);
+                    AssignTaskToSoldier(_technicians[0], breach,
+                        breach.GetComponent<Interactable>().standingPoints[0].position, InteractionType.BREACH);
                     _technicians.RemoveAt(0);
-                    AssignTaskToSoldier(_units[0], breach, breach.GetComponent<Interactable>().standingPoints[1].position, InteractionType.BREACH);
+                    AssignTaskToSoldier(_units[0], breach,
+                        breach.GetComponent<Interactable>().standingPoints[1].position, InteractionType.BREACH);
                     _units.RemoveAt(0);
                     totalBreachUnitCount = _units.Count + technicians.Count;
                 }
                 // Has two base units to breach
                 else if (_units.Count >= 2)
                 {
-                    AssignTaskToSoldier(_units[0], breach, breach.GetComponent<Interactable>().standingPoints[0].position,InteractionType.BREACH);
+                    AssignTaskToSoldier(_units[0], breach,
+                        breach.GetComponent<Interactable>().standingPoints[0].position,InteractionType.BREACH);
                     _units.RemoveAt(0);
-                    AssignTaskToSoldier(_units[0], breach, breach.GetComponent<Interactable>().standingPoints[1].position, InteractionType.BREACH);
+                    AssignTaskToSoldier(_units[0], breach,
+                        breach.GetComponent<Interactable>().standingPoints[1].position, InteractionType.BREACH);
                     _units.RemoveAt(0);
                     totalBreachUnitCount = _units.Count + technicians.Count;
                 }
-                
-                
             }
+
             totalBreachUnitCount = _units.Count + technicians.Count;
             // When all Breaches have at least 2 units/technicians assigned to them assign the rest spread across
             int cycleCount = 0;

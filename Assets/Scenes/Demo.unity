@@ -2556,6 +2556,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2029608401}
     - target: {fileID: 7724116535577096856, guid: 0329c9d018659b64f97bf52c1b7cf138, type: 3}
+      propertyPath: maxUnitCost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724116535577096856, guid: 0329c9d018659b64f97bf52c1b7cf138, type: 3}
       propertyPath: unitCostText
       value: 
       objectReference: {fileID: 856115312}

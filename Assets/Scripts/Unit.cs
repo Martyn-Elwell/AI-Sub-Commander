@@ -1,8 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.AI;
+
+public enum unitState
+{
+    IDLE,
+    MOVING,
+    ACTIVE,
+    SEARCHING,
+    SHOOTING
+}
 
 public class Unit : Character
 {
@@ -13,6 +21,7 @@ public class Unit : Character
 
     [Header("Stats")]
     public unitEnum type;
+    public unitState state;
     public bool active = false;
     public float radius = 10f;
     public float rotationSpeed = 2f;
@@ -43,9 +52,13 @@ public class Unit : Character
 
     void Update()
     {
-        if (!active) { return; }
-        UpdateShooting();
         UpdateMovement();
+        if (state == unitState.SEARCHING || state == unitState.SHOOTING)
+        {
+            UpdateShooting();
+        }
+        
+        
         
     }
     private void UpdateMovement()
@@ -54,6 +67,14 @@ public class Unit : Character
         if (velocity > 0.1)
         {
             animator.SetBool("Moving", true);
+            if (active)
+            {
+                state = unitState.SEARCHING;
+            }
+            else
+            {
+                state = unitState.MOVING;
+            }
         }
         else 
         {
@@ -74,7 +95,8 @@ public class Unit : Character
                 {
                     Vector3 directionToTarget = other.transform.position - transform.position.normalized;
                     float distanceToTarget = Vector3.Distance(transform.position, other.transform.position);
-                    if (!Physics.Raycast(transform.position + Vector3.up*1.5f, directionToTarget, distanceToTarget, obstructionMask))
+                    if (!Physics.Raycast(transform.position + Vector3.up*1.5f,
+                        directionToTarget, distanceToTarget, obstructionMask))
                     {
                         target = other.transform;
                         Debug.Log("Targetting " + target.name);
@@ -90,9 +112,11 @@ public class Unit : Character
                 Quaternion rotation = Quaternion.LookRotation(direction);
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
                 gun.StartShooting();
+                state = unitState.SHOOTING;
             }
             else if (!spotted)
             {
+                state = unitState.SEARCHING;
                 Debug.Log("Stop");
                 gun.StopShooting();
             }
@@ -103,6 +127,7 @@ public class Unit : Character
     public void Activate()
     {
         active = true;
+        state = unitState.SEARCHING;
     }
 
     public virtual void DeleteUnit()
